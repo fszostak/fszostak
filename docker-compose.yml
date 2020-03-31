@@ -1,0 +1,19 @@
+version: '3.7'
+
+volumes:
+  ssh:
+    driver_opts:
+      type: none
+      device: $PWD/ssh
+      o: bind
+
+services:
+
+  ubuntu:
+    container_name: linux-local
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    working_dir: /root
+    volumes:
+      - ./ssh:/root/.ssh
